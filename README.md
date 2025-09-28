@@ -1,2 +1,2 @@
-# ch32v003-hal-driver
-Provide HAL interface for CH32V003
+# ch32v00x-hal-driver
+Provide HAL interface for CH32V00X
