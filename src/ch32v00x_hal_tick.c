@@ -121,6 +121,14 @@ uint8_t HAL_TickExpired(uint32_t start_ms, uint32_t timeout_ms)
 __attribute__((weak)) void HAL_IncTick(void) { uwTick++; }
 
 /**
+  * @brief User callback function.
+  * @note This function is declared as __weak to be overwritten in case of other
+  *       implementations in user file.
+  * @retval none
+  */
+__attribute__((weak)) void HAL_SysTick_UserCallback(void) {}
+
+/**
   * @brief ISR of SysTick, which will trigger tick count to be increased by 1 every 1ms.
   * @retval none
   */
@@ -129,4 +137,5 @@ void SysTick_Handler(void)
 {
     CLEAR_REG(SysTick->SR);
     HAL_IncTick();
+    HAL_SysTick_UserCallback();
 }
